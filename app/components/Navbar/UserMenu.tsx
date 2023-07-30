@@ -2,9 +2,11 @@
 import { IoEarthOutline, IoMenu, IoPersonCircleSharp } from 'react-icons/io5';
 import Avatar from '../Avatar';
 import { useCallback, useState } from 'react';
-import MenutItem from './MenuItem';
+import MenuItem from './MenuItem';
+import useRegisterModal from '@/app/hooks/useRegisterModal';
 
 const UserMenu = () => {
+    const registerModal = useRegisterModal()
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = useCallback(() => {
@@ -79,12 +81,12 @@ const UserMenu = () => {
                 >
                     <div className="flex flex-col cursor-pointer">
                         <>
-                            <MenutItem 
+                            <MenuItem 
                                 onClick={() => {}}
                                 label="Login"
                             />
-                            <MenutItem 
-                                onClick={() => {}}
+                            <MenuItem 
+                                onClick={registerModal.onOpen}
                                 label="Sign up"
                             />
                         </>
