@@ -1,7 +1,15 @@
 'use client';
 import { IoEarthOutline, IoMenu, IoPersonCircleSharp } from 'react-icons/io5';
+import Avatar from '../Avatar';
+import { useCallback, useState } from 'react';
+import MenutItem from './MenuItem';
 
 const UserMenu = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleOpen = useCallback(() => {
+        setIsOpen((value) => !value)
+    }, [])
     return ( 
         <div
             className='
@@ -13,20 +21,24 @@ const UserMenu = () => {
         >
             <div
                 className="
+                    p-2
                     font-semibold
-                    p-2.5
                     rounded-full
                     border-[1px]
                     border-transparent
+                    text-center
                     transition
                     hover:bg-gray-200
+                    max-sm:hidden
                 "
             >
                 Airbnb your home
             </div>
             <div
                 className='
-                    p-2.5
+                    p-2
+                    md:p-2
+                    gap-3
                     rounded-full
                     text-lg
                     hover:bg-gray-200
@@ -35,6 +47,7 @@ const UserMenu = () => {
                 <IoEarthOutline />
             </div>
             <div
+                onClick={toggleOpen}
                 className='
                     rounded-full
                     border-[1px]
@@ -48,10 +61,36 @@ const UserMenu = () => {
                 <div className="text-lg px-2">
                     <IoMenu />
                 </div>
-                <div className="text-4xl text-gray-400">
-                    <IoPersonCircleSharp />
-                </div>
+                <Avatar />
             </div>
+            {isOpen && (
+                <div 
+                    className='
+                        absolute
+                        rounded-xl
+                        shadow-md
+                        w-[40vw]
+                        md:w-3/4
+                        bg-white
+                        overflow-hidden
+                        top-12
+                        text-sm
+                    '
+                >
+                    <div className="flex flex-col cursor-pointer">
+                        <>
+                            <MenutItem 
+                                onClick={() => {}}
+                                label="Login"
+                            />
+                            <MenutItem 
+                                onClick={() => {}}
+                                label="Sign up"
+                            />
+                        </>
+                    </div>
+                </div>
+            )}
         </div>
      );
 }
