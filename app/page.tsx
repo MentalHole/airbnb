@@ -1,6 +1,12 @@
+import Modal from "./components/Modals/Modal";
+import Navbar from "./components/Navbar/Navbar";
 
 export default function Home() {
   return (
-    <div className="text-rose-500 text-2x1">Airbnb clone</div>
+    
+    <div className="black text-2x1">
+      <Modal isOpen />
+      <Navbar />
+    </div>
   )
 }
